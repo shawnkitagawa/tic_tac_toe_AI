@@ -16,6 +16,9 @@ class tic_tac_toe():
         for i in range(3):
             print(self.board[i])
 
+        print("\n")
+        print("\n")
+
     def turn(self):
         if self.symbol == " O ":
             self.symbol = " X "
@@ -105,16 +108,21 @@ class tic_tac_toe():
 play = tic_tac_toe()
 play.display()
 count = 0
+judge = False
 
-while play.judge() == False:
+while judge == False:
     if count % 2 == 0 :
+        print("Users Turn")
         cordinate = play.user_input()
     else:
-        play.turn()
+        print("Computer's Turn")
         cordinate = play.computer()
     count += 1 
+    
 
     play.update_board(cordinate)
     play.display()
+    judge = play.judge()
+    play.turn()
 
 
